@@ -16,6 +16,7 @@ import be.nabu.libs.resources.api.ReadableResource;
 import be.nabu.libs.resources.api.Resource;
 import be.nabu.libs.resources.api.ResourceContainer;
 import be.nabu.libs.resources.api.ResourceRoot;
+import be.nabu.libs.resources.api.LocatableResource;
 import be.nabu.utils.io.IOUtils;
 
 public class ZIPArchive implements Archive<Resource>, ResourceRoot {
@@ -130,7 +131,7 @@ public class ZIPArchive implements Archive<Resource>, ResourceRoot {
 
 	@Override
 	public URI getURI() {
-		return ((ResourceRoot) source).getURI();
+		return ((LocatableResource) source).getURI();
 	}
 
 	@Override
