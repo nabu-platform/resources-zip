@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import be.nabu.libs.resources.ResourceUtils;
 import be.nabu.libs.resources.api.Archive;
 import be.nabu.libs.resources.api.ReadableResource;
 import be.nabu.libs.resources.api.Resource;
@@ -86,12 +85,12 @@ public class ZIPArchive implements Archive<Resource>, ResourceRoot {
 
 	@Override
 	public Resource getChild(String name) {
-		try {
-			return ResourceUtils.resolve(this, name);
+		for (Resource child : this) {
+			if (child.getName().equals(name)) {
+				return child;
+			}
 		}
-		catch (IOException e) {
-			throw new RuntimeException(e);
-		}
+		return null;
 	}
 
 	@Override

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import be.nabu.libs.resources.ResourceUtils;
 import be.nabu.libs.resources.api.Resource;
 import be.nabu.libs.resources.api.ResourceContainer;
 
@@ -38,13 +37,13 @@ public class ZIPDirectory implements ResourceContainer<Resource> {
 	}
 	
 	@Override
-	public ZIPItem getChild(String name) {
-		try {
-			return (ZIPItem) ResourceUtils.resolve(this, name);
+	public Resource getChild(String name) {
+		for (Resource child : this) {
+			if (child.getName().equals(name)) {
+				return child;
+			}
 		}
-		catch (IOException e) {
-			throw new RuntimeException(e);
-		}
+		return null;
 	}
 
 	@Override
