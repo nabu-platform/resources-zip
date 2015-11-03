@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import be.nabu.libs.resources.ResourceFactory;
+import be.nabu.libs.resources.api.Resource;
 import be.nabu.libs.resources.api.ResourceResolver;
-import be.nabu.libs.resources.api.ResourceRoot;
 
 /**
  * Use zip:file:/path/to/file.zip
@@ -24,10 +24,10 @@ public class ZIPResourceResolver implements ResourceResolver {
 	}
 
 	@Override
-	public ResourceRoot getResource(URI uri, Principal principal) throws IOException {
+	public Resource getResource(URI uri, Principal principal) throws IOException {
 		try {
 			ZIPArchive zipArchive = new ZIPArchive();
-			ResourceRoot resource = ResourceFactory.getInstance().resolve(new URI(uri.getSchemeSpecificPart()), principal);
+			Resource resource = ResourceFactory.getInstance().resolve(new URI(uri.getSchemeSpecificPart()), principal);
 			zipArchive.setSource(resource);
 			return zipArchive;
 		}
