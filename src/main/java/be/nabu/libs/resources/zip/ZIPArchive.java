@@ -1,5 +1,6 @@
 package be.nabu.libs.resources.zip;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
@@ -14,11 +15,10 @@ import be.nabu.libs.resources.api.Archive;
 import be.nabu.libs.resources.api.ReadableResource;
 import be.nabu.libs.resources.api.Resource;
 import be.nabu.libs.resources.api.ResourceContainer;
-import be.nabu.libs.resources.api.ResourceRoot;
 import be.nabu.libs.resources.api.LocatableResource;
 import be.nabu.utils.io.IOUtils;
 
-public class ZIPArchive implements Archive<Resource>, ResourceRoot {
+public class ZIPArchive implements Archive<Resource>, Closeable, LocatableResource {
 
 	private Resource source;
 	
