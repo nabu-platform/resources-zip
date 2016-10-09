@@ -33,6 +33,7 @@ public class ZIPArchive implements Archive<Resource>, Closeable, LocatableResour
 			directories = new HashMap<String, ResourceContainer<?>>();
 			entries = new HashMap<ResourceContainer<?>, List<Resource>>();
 			
+			entries.put(this, new ArrayList<Resource>());
 			ZipInputStream input = new ZipInputStream(IOUtils.toInputStream(((ReadableResource) getSource()).getReadable()));
 			try {
 				ZipEntry entry = null;
