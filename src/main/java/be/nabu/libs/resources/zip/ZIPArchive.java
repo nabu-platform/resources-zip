@@ -130,8 +130,8 @@ public class ZIPArchive implements Archive<Resource>, Closeable, LocatableResour
 	}
 
 	@Override
-	public URI getURI() {
-		return ((LocatableResource) source).getURI();
+	public URI getUri() {
+		return ((LocatableResource) source).getUri();
 	}
 
 	@Override
