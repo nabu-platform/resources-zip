@@ -55,4 +55,9 @@ public class ZIPDirectory implements ResourceContainer<Resource> {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public void close() throws IOException {
+		archive.close();
+	}
 }

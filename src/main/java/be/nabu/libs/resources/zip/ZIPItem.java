@@ -73,4 +73,8 @@ public class ZIPItem implements ReadableResource, FiniteResource, TimestampedRes
 		return parent;
 	}
 
+	@Override
+	public void close() throws IOException {
+		source.close();
+	}
 }
